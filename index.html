@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deltashot Remastered — SanekSketch</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0a0a0f;
+            background-image: 
+                radial-gradient(circle at 20% 30%, #2a0a3a 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, #1a0a2a 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, #0f0a1a 0%, transparent 70%);
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            color: #e0d0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: 0;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        body::before {
+            width: 400px;
+            height: 400px;
+            background: #6a0dad;
+            top: -100px;
+            left: -100px;
+        }
+
+        body::after {
+            width: 500px;
+            height: 500px;
+            background: #3a0a5a;
+            bottom: -150px;
+            right: -150px;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        .glass {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            width: 100%;
+            background: rgba(30, 10, 50, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(180, 120, 255, 0.2);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 100px rgba(120, 50, 200, 0.2);
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 100px;
+            font-weight: 900;
+            letter-spacing: 15px;
+            color: #d0b0ff;
+            text-shadow: 
+                0 0 20px rgba(180, 120, 255, 0.8),
+                0 0 40px rgba(120, 50, 200, 0.5),
+                4px 4px 0 #0a0a0f;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            letter-spacing: 6px;
+            color: #9a7ab0;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #f0e0ff;
+            text-shadow: 0 0 20px rgba(180, 120, 255, 0.5);
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #c0b0d0;
+            margin-bottom: 18px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b478ff, transparent);
+            margin: 30px auto;
+            border-radius: 2px;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #d0b0ff;
+            font-size: 18px;
+            padding: 20px;
+            border-left: 3px solid #6a0dad;
+            background: rgba(106, 13, 173, 0.1);
+            border-radius: 0 12px 12px 0;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(180, 120, 255, 0.3);
+            background: rgba(106, 13, 173, 0.3);
+            color: #f0e0ff;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            background: rgba(140, 50, 220, 0.5);
+            border-color: rgba(200, 150, 255, 0.6);
+            box-shadow: 0 0 30px rgba(140, 50, 220, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #7a6a8a;
+        }
+
+        @media (max-width: 600px) {
+            .logo { font-size: 70px; letter-spacing: 10px; }
+            h1 { font-size: 24px; }
+            .glass { padding: 35px 25px; }
+            p { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glass">
+        <div class="logo">DS</div>
+        <div class="subtitle">Deltashot Remastered</div>
+
+        <h1>Привет, я SanekSketch</h1>
+        <p>
+            Разработчик игры <strong>Deltashot Remastered</strong> — проекта, 
+            который пока знают немногие. Но это пока.
+        </p>
+
+        <div class="divider"></div>
+
+        <p>
+            Рисую в <strong>GIMP</strong>. Собираю в <strong>Clickteam</strong>. 
+            Ломаю музыку в <strong>OpenMPT</strong>. Иногда сижу на толчке 
+            и обсуждаю игру с фанатами.
+        </p>
+
+        <div class="quote">
+            «Я не обещаю шедевр. Я обещаю честность.»
+        </div>
+
+        <p>
+            Хочешь увидеть, что получится? Загляни на страницу игры в itch.io 
+            или напиши мне напрямую.
+        </p>
+
+        <div class="buttons">
+            <a href="https://deltashot-remastered-dev.itch.io" class="btn" target="_blank">
+                🎮 Itch.io
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&to=deltashotremastereddev@gmail.com" 
+               class="btn" target="_blank">
+                ✉️ Написать в Gmail
+            </a>
+        </div>
+
+        <div class="footer">
+            © 2026 SanekSketch • Deltashot Remastered
+        </div>
+    </div>
+</body>
+</html>
