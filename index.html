@@ -1,227 +1,420 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deltashot Remastered — SanekSketch</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeltashotDev — Разработчик</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-        body {
-            min-height: 100vh;
-            background: #0a0a0f;
-            background-image: 
-                radial-gradient(circle at 20% 30%, #2a0a3a 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, #1a0a2a 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, #0f0a1a 0%, transparent 70%);
-            font-family: 'Segoe UI', 'Arial', sans-serif;
-            color: #e0d0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            overflow-x: hidden;
-            position: relative;
-        }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-        body::before,
-        body::after {
-            content: '';
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: 0;
-            animation: float 20s infinite ease-in-out;
-        }
+  html {
+    scroll-behavior: smooth;
+  }
 
-        body::before {
-            width: 400px;
-            height: 400px;
-            background: #6a0dad;
-            top: -100px;
-            left: -100px;
-        }
+  body {
+    background: #08080d;
+    background-image:
+      radial-gradient(ellipse at 50% -20%, #2a0a3a 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, #1a0a2a 0%, transparent 50%);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    color: #e0d0f0;
+    min-height: 100vh;
+    padding: 0 24px 80px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-        body::after {
-            width: 500px;
-            height: 500px;
-            background: #3a0a5a;
-            bottom: -150px;
-            right: -150px;
-            animation-delay: -10s;
-        }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+  }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-30px, 30px) scale(0.9); }
-        }
+  /* Шапка */
+  header {
+    text-align: center;
+    padding: 100px 0 70px;
+    position: relative;
+  }
 
-        .glass {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-            width: 100%;
-            background: rgba(30, 10, 50, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
-            border: 1px solid rgba(180, 120, 255, 0.2);
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                0 0 100px rgba(120, 50, 200, 0.2);
-            padding: 50px 40px;
-            text-align: center;
-        }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(180, 120, 255, 0.4), transparent);
+  }
 
-        .logo {
-            font-size: 100px;
-            font-weight: 900;
-            letter-spacing: 15px;
-            color: #d0b0ff;
-            text-shadow: 
-                0 0 20px rgba(180, 120, 255, 0.8),
-                0 0 40px rgba(120, 50, 200, 0.5),
-                4px 4px 0 #0a0a0f;
-            margin-bottom: 10px;
-            line-height: 1;
-        }
+  .logo {
+    font-size: 88px;
+    font-weight: 800;
+    letter-spacing: 16px;
+    color: #d0b0ff;
+    text-shadow: 0 0 40px rgba(180, 120, 255, 0.5);
+    margin-bottom: 20px;
+    line-height: 1;
+    animation: glow 6s ease-in-out infinite;
+  }
 
-        .subtitle {
-            font-size: 14px;
-            letter-spacing: 6px;
-            color: #9a7ab0;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-        }
+  @keyframes glow {
+    0%, 100% { text-shadow: 0 0 40px rgba(180, 120, 255, 0.5); }
+    50% { text-shadow: 0 0 60px rgba(180, 120, 255, 0.8); }
+  }
 
-        h1 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #f0e0ff;
-            text-shadow: 0 0 20px rgba(180, 120, 255, 0.5);
-        }
+  .subtitle {
+    font-size: 12px;
+    letter-spacing: 8px;
+    color: #7a5a90;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    font-weight: 500;
+  }
 
-        p {
-            font-size: 17px;
-            line-height: 1.7;
-            color: #c0b0d0;
-            margin-bottom: 18px;
-        }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #f0e0ff;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
 
-        .divider {
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #b478ff, transparent);
-            margin: 30px auto;
-            border-radius: 2px;
-        }
+  .tagline {
+    font-size: 17px;
+    color: #a090b0;
+    max-width: 520px;
+    margin: 0 auto;
+    font-weight: 300;
+    line-height: 1.6;
+  }
 
-        .quote {
-            font-style: italic;
-            color: #d0b0ff;
-            font-size: 18px;
-            padding: 20px;
-            border-left: 3px solid #6a0dad;
-            background: rgba(106, 13, 173, 0.1);
-            border-radius: 0 12px 12px 0;
-            margin: 30px 0;
-            text-align: left;
-        }
+  /* Секции */
+  section {
+    margin-bottom: 72px;
+  }
 
-        .buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #7a5a90;
+    margin-bottom: 28px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(180, 120, 255, 0.3);
-            background: rgba(106, 13, 173, 0.3);
-            color: #f0e0ff;
-            backdrop-filter: blur(10px);
-            cursor: pointer;
-            font-family: inherit;
-        }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(180, 120, 255, 0.15), transparent);
+  }
 
-        .btn:hover {
-            background: rgba(140, 50, 220, 0.5);
-            border-color: rgba(200, 150, 255, 0.6);
-            box-shadow: 0 0 30px rgba(140, 50, 220, 0.5);
-            transform: translateY(-3px);
-        }
+  .section-title.blood::after {
+    background: linear-gradient(90deg, rgba(220, 50, 60, 0.15), transparent);
+  }
 
-        .footer {
-            margin-top: 40px;
-            font-size: 13px;
-            color: #7a6a8a;
-        }
+  .section-title.blood {
+    color: #a04a5a;
+  }
 
-        @media (max-width: 600px) {
-            .logo { font-size: 70px; letter-spacing: 10px; }
-            h1 { font-size: 24px; }
-            .glass { padding: 35px 25px; }
-            p { font-size: 15px; }
-        }
-    </style>
+  /* Фиолетовый блок — общая инфа */
+  .info-block {
+    background: rgba(30, 12, 45, 0.4);
+    border: 1px solid rgba(180, 120, 255, 0.12);
+    border-radius: 20px;
+    padding: 32px 36px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .info-block:hover {
+    border-color: rgba(180, 120, 255, 0.3);
+    background: rgba(40, 15, 60, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .info-block p {
+    color: #c0b0d0;
+    font-size: 16px;
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+
+  .info-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-block .label {
+    color: #b478ff;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  /* Красный блок — Санёк и игра */
+  .blood-block {
+    background: rgba(45, 5, 10, 0.4);
+    border: 1px solid rgba(220, 50, 60, 0.18);
+    border-radius: 20px;
+    padding: 32px 36px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .blood-block:hover {
+    border-color: rgba(220, 50, 60, 0.4);
+    background: rgba(60, 8, 15, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .blood-block p {
+    color: #c8a0a0;
+    font-size: 16px;
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+
+  .blood-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  .blood-block .label {
+    color: #ff4a5a;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .blood-block .quote {
+    font-style: italic;
+    color: #ff9090;
+    border-left: 2px solid #ff4a5a;
+    padding-left: 20px;
+    margin: 20px 0;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* Ссылки */
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(30, 12, 45, 0.4);
+    border: 1px solid rgba(180, 120, 255, 0.12);
+    border-radius: 16px;
+    padding: 20px 28px;
+    text-decoration: none;
+    color: #e0d0f0;
+    font-size: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .link-btn:hover {
+    background: rgba(50, 20, 80, 0.5);
+    border-color: rgba(180, 120, 255, 0.4);
+    transform: translateX(6px);
+  }
+
+  .link-btn .name {
+    font-weight: 600;
+    color: #d0b0ff;
+    font-size: 15px;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+  }
+
+  .link-btn .value {
+    color: #8a6aa0;
+    font-size: 14px;
+    font-family: 'SF Mono', 'Monaco', monospace;
+    letter-spacing: 0.2px;
+  }
+
+  .link-btn .copy-hint {
+    font-size: 11px;
+    color: #5a4a6a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .link-btn:hover .copy-hint {
+    color: #9a7ab0;
+  }
+
+  /* Анимация копирования */
+  .copied {
+    background: rgba(20, 50, 30, 0.4) !important;
+    border-color: rgba(100, 255, 150, 0.4) !important;
+  }
+
+  /* Футер */
+  footer {
+    text-align: center;
+    padding: 60px 20px 0;
+    border-top: 1px solid rgba(180, 120, 255, 0.08);
+    margin-top: 80px;
+    color: #5a4a6a;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  footer .footer-logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    color: #4a3a5a;
+    margin-bottom: 16px;
+  }
+
+  /* Мобильная версия */
+  @media (max-width: 600px) {
+    body { padding: 0 16px 60px; }
+    header { padding: 60px 0 50px; }
+    .logo { font-size: 56px; letter-spacing: 10px; }
+    h1 { font-size: 24px; }
+    .tagline { font-size: 15px; }
+    section { margin-bottom: 56px; }
+    .info-block, .blood-block { padding: 24px 22px; }
+    .link-btn {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 18px 22px;
+    }
+    .copy-hint { align-self: flex-end; }
+  }
+</style>
 </head>
 <body>
-    <div class="glass">
-        <div class="logo">DS</div>
-        <div class="subtitle">Deltashot Remastered</div>
+<div class="container">
 
-        <h1>Привет, я SanekSketch</h1>
-        <p>
-            Разработчик игры <strong>Deltashot Remastered</strong> — проекта, 
-            который пока знают немногие. Но это пока.
-        </p>
+  <header>
+    <div class="logo">DS</div>
+    <div class="subtitle">Deltashot Remastered</div>
+    <h1>DeltashotDev</h1>
+    <p class="tagline">Разработчик. Один. Без команды. Без бюджета. Но с идеей, которую нельзя остановить.</p>
+  </header>
 
-        <div class="divider"></div>
+  <!-- ОБЩАЯ ИНФА — ФИОЛЕТОВЫЙ -->
+  <section>
+    <div class="section-title">О разработчике</div>
 
-        <p>
-            Рисую в <strong>GIMP</strong>. Собираю в <strong>Clickteam</strong>. 
-            Ломаю музыку в <strong>OpenMPT</strong>. Иногда сижу на толчке 
-            и обсуждаю игру с фанатами.
-        </p>
-
-        <div class="quote">
-            «Я не обещаю шедевр. Я обещаю честность.»
-        </div>
-
-        <p>
-            Хочешь увидеть, что получится? Загляни на страницу игры в itch.io 
-            или напиши мне напрямую.
-        </p>
-
-        <div class="buttons">
-            <a href="https://deltashot-remastered-dev.itch.io" class="btn" target="_blank">
-                🎮 Itch.io
-            </a>
-            <a href="https://mail.google.com/mail/?view=cm&to=deltashotremastereddev@gmail.com" 
-               class="btn" target="_blank">
-                ✉️ Написать в Gmail
-            </a>
-        </div>
-
-        <div class="footer">
-            © 2026 SanekSketch • Deltashot Remastered
-        </div>
+    <div class="info-block">
+      <p><span class="label">Псевдоним:</span> SanekSketch</p>
+      <p><span class="label">Юзернейм:</span> @deltashotremastereddev</p>
+      <p><span class="label">Роль:</span> Разработчик. Художник. Композитор. Сценарист. Всё в одном лице.</p>
+      <p><span class="label">Статус:</span> Работаю в одиночку. Учусь на ошибках. Делаю лучше с каждым разом.</p>
     </div>
+
+    <div class="info-block">
+      <p>Я делаю игры. Не потому что меня просят. Не потому что платят. А потому что не могу иначе.</p>
+      <p>Deltashot Remastered — мой основной проект. Игра, которую я собираю по кускам. Медленно. Но упорно.</p>
+    </div>
+  </section>
+
+  <!-- ИНФА О САНЬКЕ И ИГРЕ — КРАСНЫЙ -->
+  <section>
+    <div class="section-title blood">Санёк и Deltashot</div>
+
+    <div class="blood-block">
+      <p><span class="label">Игра:</span> Deltashot Remastered</p>
+      <p><span class="label">Жанр:</span> Психологический хоррор</p>
+      <p><span class="label">Персонаж:</span> Санёк</p>
+    </div>
+
+    <div class="blood-block">
+      <p>Санёк — не монстр. И не жертва. Он — человек, который сам выбрал свой путь.</p>
+      <p><span class="label">Возраст:</span> 19 лет</p>
+      <p><span class="label">Прошлое:</span> В детстве сжёг квартиру вместе с матерью. Пока она спала.</p>
+      <p><span class="label">Настоящее:</span> 50 трупов. Отказ от лечения. Нож.</p>
+      <div class="quote">«В его колонке богов — только он сам. И это страшнее всего.»</div>
+    </div>
+
+    <div class="blood-block">
+      <p>Deltashot — это не просто игра. Это история про боль, огонь и одиночество.</p>
+      <p>Скоро будет. Но это не точно.</p>
+    </div>
+  </section>
+
+  <!-- ССЫЛКИ -->
+  <section>
+    <div class="section-title">Связь и проекты</div>
+
+    <div class="links">
+      <div class="link-btn" onclick="copyText('deltashotremastereddev@gmail.com', this)">
+        <div>
+          <div class="name">Gmail</div>
+          <div class="value">deltashotremastereddev@gmail.com</div>
+        </div>
+        <div class="copy-hint">нажми, чтобы скопировать</div>
+      </div>
+
+      <div class="link-btn" onclick="copyText('deltashot-remastered-dev.itch.io', this)">
+        <div>
+          <div class="name">Itch.io</div>
+          <div class="value">deltashot-remastered-dev.itch.io</div>
+        </div>
+        <div class="copy-hint">нажми, чтобы скопировать</div>
+      </div>
+
+      <div class="link-btn" onclick="copyText('@deltashotremastereddev', this)">
+        <div>
+          <div class="name">TikTok</div>
+          <div class="value">@deltashotremastereddev</div>
+        </div>
+        <div class="copy-hint">нажми, чтобы скопировать</div>
+      </div>
+
+
+    </div>
+  </section>
+
+<footer>
+    <div class="footer-logo">DS</div>
+    DeltashotDev © 2026
+</footer>
+
+</div>
+
+<script>
+function copyText(text, element) {
+  navigator.clipboard.writeText(text).then(function() {
+    element.classList.add('copied');
+    var hint = element.querySelector('.copy-hint');
+    var original = hint.textContent;
+    hint.textContent = 'скопировано';
+    setTimeout(function() {
+      element.classList.remove('copied');
+      hint.textContent = original;
+    }, 1500);
+  }).catch(function() {
+    alert('Не удалось скопировать. Скопируй вручную: ' + text);
+  });
+}
+</script>
+
 </body>
 </html>
