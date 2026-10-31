@@ -389,7 +389,6 @@
       <p><span class="label">ФАЙЛ 01: ИЗОБРАЖЕНИЕ_ПОДОЗРЕВАЕМОГО.PNG</span></p>
       <p style="font-size: 14px; color: #8a6aa0; margin-bottom: 10px;">Изъято из личного архива разработчика. Не подлежит распространению.</p>
       
-      <!-- ВАЖНО: Картинка Санька. Замени 'suspect.png' на имя твоего файла -->
       <div style="text-align: center; margin: 20px 0;">
         <img src="suspect.png" alt="Спрайт Санька" style="max-width: 100%; border: 1px solid #ff4a5a; border-radius: 4px;">
       </div>
@@ -404,7 +403,12 @@
       </div>
       
       <p style="margin-top: 30px;"><span class="label">ФАЙЛ 03: КООРДИНАТЫ_БУНКЕРА</span></p>
-      <p style="font-size: 14px; color: #8a6aa0;">Широта: 50.0000<br>Долгота: 19.0000<br>Глубина: ERROR</p>
+      <p style="font-size: 14px; color: #8a6aa0; line-height: 1.6;">
+        Широта: 50.0000<br>
+        Долгота: 19.0000<br>
+        Глубина: ERROR<br>
+        <span style="color: #ff4a5a;">Субъект не найден.</span>
+      </p>
     </div>
   </section>
 
@@ -415,12 +419,17 @@
     <div style="color: #08080d; font-size: 12px; margin-top: 10px; cursor: default; user-select: text;">
       [ERR: 5389GH - ACCESS]
     </div>
+
+    <!-- НЕВИДИМОЕ ПОЛЕ ДЛЯ ВВОДА КОДА С ТЕЛЕФОНА -->
+    <div style="margin-top: 20px; opacity: 0.01; height: 1px; overflow: hidden;">
+      <input type="text" id="mobile-secret-input" placeholder="Введите код..." autocomplete="off">
+    </div>
   </footer>
 
 </div>
 
 <script>
-// Функция копирования (твоя старая)
+// Функция копирования
 function copyText(text, element) {
   navigator.clipboard.writeText(text).then(function() {
     element.classList.add('copied');
@@ -437,11 +446,28 @@ function copyText(text, element) {
 }
 
 // --- СЕКРЕТНЫЙ КОД АРГ ---
-let secretCode = '';
 const TARGET_CODE = '5389GH';
+let secretCode = '';
 
+function checkSecretCode(inputStr) {
+  if (inputStr.toUpperCase() === TARGET_CODE) {
+    const secretSection = document.getElementById('secret-section');
+    secretSection.style.display = 'block';
+    
+    document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+    setTimeout(() => {
+      document.body.style.filter = 'none';
+      secretSection.scrollIntoView({ behavior: 'smooth' });
+    }, 150);
+
+    secretCode = ''; 
+    document.getElementById('mobile-secret-input').value = ''; 
+  }
+}
+
+// 1. Слушаем ПК
 document.addEventListener('keydown', function(event) {
-  if (event.key.length > 1) return; // Игнорируем Shift, Ctrl и т.д.
+  if (event.key.length > 1) return; 
 
   secretCode += event.key.toUpperCase();
   
@@ -450,17 +476,15 @@ document.addEventListener('keydown', function(event) {
   }
 
   if (secretCode === TARGET_CODE) {
-    const secretSection = document.getElementById('secret-section');
-    secretSection.style.display = 'block';
-    
-    // Эффект "глитча" при появлении
-    document.body.style.filter = 'invert(1) hue-rotate(180deg)';
-    setTimeout(() => {
-      document.body.style.filter = 'none';
-      secretSection.scrollIntoView({ behavior: 'smooth' });
-    }, 150);
+    checkSecretCode(secretCode);
+  }
+});
 
-    secretCode = '';
+// 2. Слушаем ТЕЛЕФОН
+document.getElementById('mobile-secret-input').addEventListener('input', function(e) {
+  const val = e.target.value;
+  if (val.length >= TARGET_CODE.length) {
+    checkSecretCode(val);
   }
 });
 </script>
