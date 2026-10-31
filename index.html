@@ -7,16 +7,8 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     background: #08080d;
     background-image:
@@ -30,258 +22,75 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
-  .container {
-    max-width: 820px;
-    margin: 0 auto;
-  }
-
-  header {
-    text-align: center;
-    padding: 100px 0 70px;
-    position: relative;
-  }
-
+  .container { max-width: 820px; margin: 0 auto; }
+  header { text-align: center; padding: 100px 0 70px; position: relative; }
   header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(180, 120, 255, 0.4), transparent);
+    content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 1px; background: linear-gradient(90deg, transparent, rgba(180, 120, 255, 0.4), transparent);
   }
-
   .logo {
-    font-size: 88px;
-    font-weight: 800;
-    letter-spacing: 16px;
-    color: #d0b0ff;
-    text-shadow: 0 0 40px rgba(180, 120, 255, 0.5);
-    margin-bottom: 20px;
-    line-height: 1;
+    font-size: 88px; font-weight: 800; letter-spacing: 16px; color: #d0b0ff;
+    text-shadow: 0 0 40px rgba(180, 120, 255, 0.5); margin-bottom: 20px; line-height: 1;
     animation: glow 6s ease-in-out infinite;
   }
-
   @keyframes glow {
     0%, 100% { text-shadow: 0 0 40px rgba(180, 120, 255, 0.5); }
     50% { text-shadow: 0 0 60px rgba(180, 120, 255, 0.8); }
   }
-
-  .subtitle {
-    font-size: 12px;
-    letter-spacing: 8px;
-    color: #7a5a90;
-    text-transform: uppercase;
-    margin-bottom: 40px;
-    font-weight: 500;
-  }
-
-  h1 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #f0e0ff;
-    margin-bottom: 16px;
-    letter-spacing: -0.5px;
-  }
-
-  .tagline {
-    font-size: 17px;
-    color: #a090b0;
-    max-width: 520px;
-    margin: 0 auto;
-    font-weight: 300;
-    line-height: 1.6;
-  }
-
-  section {
-    margin-bottom: 72px;
-  }
-
+  .subtitle { font-size: 12px; letter-spacing: 8px; color: #7a5a90; text-transform: uppercase; margin-bottom: 40px; font-weight: 500; }
+  h1 { font-size: 32px; font-weight: 700; color: #f0e0ff; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .tagline { font-size: 17px; color: #a090b0; max-width: 520px; margin: 0 auto; font-weight: 300; line-height: 1.6; }
+  section { margin-bottom: 72px; }
   .section-title {
-    font-size: 11px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: #7a5a90;
-    margin-bottom: 28px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: #7a5a90;
+    margin-bottom: 28px; font-weight: 600; display: flex; align-items: center; gap: 16px;
   }
-
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(180, 120, 255, 0.15), transparent);
-  }
-
-  .section-title.blood::after {
-    background: linear-gradient(90deg, rgba(220, 50, 60, 0.15), transparent);
-  }
-
-  .section-title.blood {
-    color: #a04a5a;
-  }
-
+  .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(180, 120, 255, 0.15), transparent); }
+  .section-title.blood::after { background: linear-gradient(90deg, rgba(220, 50, 60, 0.15), transparent); }
+  .section-title.blood { color: #a04a5a; }
   .info-block {
-    background: rgba(30, 12, 45, 0.4);
-    border: 1px solid rgba(180, 120, 255, 0.12);
-    border-radius: 20px;
-    padding: 32px 36px;
-    margin-bottom: 14px;
-    backdrop-filter: blur(20px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(30, 12, 45, 0.4); border: 1px solid rgba(180, 120, 255, 0.12);
+    border-radius: 20px; padding: 32px 36px; margin-bottom: 14px;
+    backdrop-filter: blur(20px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-
-  .info-block:hover {
-    border-color: rgba(180, 120, 255, 0.3);
-    background: rgba(40, 15, 60, 0.5);
-    transform: translateY(-2px);
-  }
-
-  .info-block p {
-    color: #c0b0d0;
-    font-size: 16px;
-    margin-bottom: 14px;
-    font-weight: 300;
-  }
-
-  .info-block p:last-child {
-    margin-bottom: 0;
-  }
-
-  .info-block .label {
-    color: #b478ff;
-    font-weight: 600;
-    font-size: 15px;
-  }
-
+  .info-block:hover { border-color: rgba(180, 120, 255, 0.3); background: rgba(40, 15, 60, 0.5); transform: translateY(-2px); }
+  .info-block p { color: #c0b0d0; font-size: 16px; margin-bottom: 14px; font-weight: 300; }
+  .info-block p:last-child { margin-bottom: 0; }
+  .info-block .label { color: #b478ff; font-weight: 600; font-size: 15px; }
   .blood-block {
-    background: rgba(45, 5, 10, 0.4);
-    border: 1px solid rgba(220, 50, 60, 0.18);
-    border-radius: 20px;
-    padding: 32px 36px;
-    margin-bottom: 14px;
-    backdrop-filter: blur(20px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(45, 5, 10, 0.4); border: 1px solid rgba(220, 50, 60, 0.18);
+    border-radius: 20px; padding: 32px 36px; margin-bottom: 14px;
+    backdrop-filter: blur(20px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-
-  .blood-block:hover {
-    border-color: rgba(220, 50, 60, 0.4);
-    background: rgba(60, 8, 15, 0.5);
-    transform: translateY(-2px);
-  }
-
-  .blood-block p {
-    color: #c8a0a0;
-    font-size: 16px;
-    margin-bottom: 14px;
-    font-weight: 300;
-  }
-
-  .blood-block p:last-child {
-    margin-bottom: 0;
-  }
-
-  .blood-block .label {
-    color: #ff4a5a;
-    font-weight: 600;
-    font-size: 15px;
-  }
-
+  .blood-block:hover { border-color: rgba(220, 50, 60, 0.4); background: rgba(60, 8, 15, 0.5); transform: translateY(-2px); }
+  .blood-block p { color: #c8a0a0; font-size: 16px; margin-bottom: 14px; font-weight: 300; }
+  .blood-block p:last-child { margin-bottom: 0; }
+  .blood-block .label { color: #ff4a5a; font-weight: 600; font-size: 15px; }
   .blood-block .quote {
-    font-style: italic;
-    color: #ff9090;
-    border-left: 2px solid #ff4a5a;
-    padding-left: 20px;
-    margin: 20px 0;
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 1.7;
+    font-style: italic; color: #ff9090; border-left: 2px solid #ff4a5a;
+    padding-left: 20px; margin: 20px 0; font-size: 17px; font-weight: 300; line-height: 1.7;
   }
-
-  .links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
+  .links { display: flex; flex-direction: column; gap: 10px; }
   .link-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(30, 12, 45, 0.4);
-    border: 1px solid rgba(180, 120, 255, 0.12);
-    border-radius: 16px;
-    padding: 20px 28px;
-    text-decoration: none;
-    color: #e0d0f0;
-    font-size: 16px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(30, 12, 45, 0.4); border: 1px solid rgba(180, 120, 255, 0.12);
+    border-radius: 16px; padding: 20px 28px; text-decoration: none; color: #e0d0f0;
+    font-size: 16px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;
   }
-
-  .link-btn:hover {
-    background: rgba(50, 20, 80, 0.5);
-    border-color: rgba(180, 120, 255, 0.4);
-    transform: translateX(6px);
-  }
-
-  .link-btn .name {
-    font-weight: 600;
-    color: #d0b0ff;
-    font-size: 15px;
-    margin-bottom: 4px;
-    letter-spacing: 0.3px;
-  }
-
-  .link-btn .value {
-    color: #8a6aa0;
-    font-size: 14px;
-    font-family: 'SF Mono', 'Monaco', monospace;
-    letter-spacing: 0.2px;
-  }
-
-  .link-btn .copy-hint {
-    font-size: 11px;
-    color: #5a4a6a;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-
-  .link-btn:hover .copy-hint {
-    color: #9a7ab0;
-  }
-
-  .copied {
-    background: rgba(20, 50, 30, 0.4) !important;
-    border-color: rgba(100, 255, 150, 0.4) !important;
-  }
-
+  .link-btn:hover { background: rgba(50, 20, 80, 0.5); border-color: rgba(180, 120, 255, 0.4); transform: translateX(6px); }
+  .link-btn .name { font-weight: 600; color: #d0b0ff; font-size: 15px; margin-bottom: 4px; letter-spacing: 0.3px; }
+  .link-btn .value { color: #8a6aa0; font-size: 14px; font-family: 'SF Mono', 'Monaco', monospace; letter-spacing: 0.2px; }
+  .link-btn .copy-hint { font-size: 11px; color: #5a4a6a; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; transition: color 0.3s ease; }
+  .link-btn:hover .copy-hint { color: #9a7ab0; }
+  .copied { background: rgba(20, 50, 30, 0.4) !important; border-color: rgba(100, 255, 150, 0.4) !important; }
   footer {
-    text-align: center;
-    padding: 60px 20px 0;
-    border-top: 1px solid rgba(180, 120, 255, 0.08);
-    margin-top: 80px;
-    color: #5a4a6a;
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1.8;
+    text-align: center; padding: 60px 20px 0; border-top: 1px solid rgba(180, 120, 255, 0.08);
+    margin-top: 80px; color: #5a4a6a; font-size: 13px; font-weight: 300; line-height: 1.8;
   }
-
   footer .footer-logo {
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: 6px;
-    color: #4a3a5a;
-    margin-bottom: 16px;
+    font-size: 24px; font-weight: 800; letter-spacing: 6px; color: #4a3a5a; margin-bottom: 16px;
+    cursor: pointer; user-select: none; /* Добавили курсор-руку для кнопки */
   }
-
   @media (max-width: 600px) {
     body { padding: 0 16px 60px; }
     header { padding: 60px 0 50px; }
@@ -290,12 +99,7 @@
     .tagline { font-size: 15px; }
     section { margin-bottom: 56px; }
     .info-block, .blood-block { padding: 24px 22px; }
-    .link-btn {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 18px 22px;
-    }
+    .link-btn { flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px 22px; }
     .copy-hint { align-self: flex-end; }
   }
 </style>
@@ -312,14 +116,12 @@
 
   <section>
     <div class="section-title">О разработчике</div>
-
     <div class="info-block">
       <p><span class="label">Псевдоним:</span> SanekSketch</p>
       <p><span class="label">Юзернейм:</span> @deltashotremastereddev</p>
       <p><span class="label">Роль:</span> Разработчик. Художник. Композитор. Сценарист. Всё в одном лице.</p>
       <p><span class="label">Статус:</span> Работаю в одиночку. Учусь на ошибках. Делаю лучше с каждым разом.</p>
     </div>
-
     <div class="info-block">
       <p>Я делаю игры. Не потому что меня просят. Не потому что платят. А потому что не могу иначе.</p>
       <p>Deltashot Remastered — мой основной проект. Игра, которую я собираю по кускам. Медленно. Но упорно.</p>
@@ -328,13 +130,11 @@
 
   <section>
     <div class="section-title blood">Санёк и Deltashot</div>
-
     <div class="blood-block">
       <p><span class="label">Игра:</span> Deltashot Remastered</p>
       <p><span class="label">Жанр:</span> Интерактивная трагедия</p>
       <p><span class="label">Персонаж:</span> Санёк</p>
     </div>
-
     <div class="blood-block">
       <p>Санёк — не монстр. И не жертва. Он — человек, который сам выбрал свой путь.</p>
       <p><span class="label">Возраст:</span> 19 лет</p>
@@ -342,7 +142,6 @@
       <p><span class="label">Настоящее:</span> 50 трупов. Отказ от лечения. Молоток.</p>
       <div class="quote">«В его колонке богов — только он сам. И это страшнее всего.»</div>
     </div>
-
     <div class="blood-block">
       <p>Deltashot — это не просто игра. Это история про боль и одиночество.</p>
       <p>Скоро будет. Но это не точно.</p>
@@ -351,44 +150,29 @@
 
   <section>
     <div class="section-title">Связь и проекты</div>
-
     <div class="links">
       <div class="link-btn" onclick="copyText('deltashotremastereddev@gmail.com', this)">
-        <div>
-          <div class="name">Gmail</div>
-          <div class="value">deltashotremastereddev@gmail.com</div>
-        </div>
+        <div><div class="name">Gmail</div><div class="value">deltashotremastereddev@gmail.com</div></div>
         <div class="copy-hint">нажми, чтобы скопировать</div>
       </div>
-
       <div class="link-btn" onclick="copyText('deltashot-remastered-dev.itch.io', this)">
-        <div>
-          <div class="name">Itch.io</div>
-          <div class="value">deltashot-remastered-dev.itch.io</div>
-        </div>
+        <div><div class="name">Itch.io</div><div class="value">deltashot-remastered-dev.itch.io</div></div>
         <div class="copy-hint">нажми, чтобы скопировать</div>
       </div>
-
       <div class="link-btn" onclick="copyText('@deltashotremastereddev', this)">
-        <div>
-          <div class="name">TikTok</div>
-          <div class="value">@deltashotremastereddev</div>
-        </div>
+        <div><div class="name">TikTok</div><div class="value">@deltashotremastereddev</div></div>
         <div class="copy-hint">нажми, чтобы скопировать</div>
       </div>
     </div>
   </section>
 
-  <!-- СЕКРЕТНЫЙ ОТДЕЛ АРГ (Изначально скрыт) -->
   <section id="secret-section" style="display: none;">
     <div class="section-title blood" style="letter-spacing: 2px;">АРХИВ ЗАСЕКРЕЧЕН</div>
-    
     <div class="blood-block" style="font-family: monospace; border-left: 2px solid #ff4a5a;">
       <p style="color: #ff4a5a; font-weight: bold; margin-bottom: 20px;">> ДОСТУП К ДЕЛУ №5389GH РАЗРЕШЕН</p>
       
       <p><span class="label">ФАЙЛ 01: ИЗОБРАЖЕНИЕ_ПОДОЗРЕВАЕМОГО.PNG</span></p>
       <p style="font-size: 14px; color: #8a6aa0; margin-bottom: 10px;">Изъято из личного архива разработчика. Не подлежит распространению.</p>
-      
       <div style="text-align: center; margin: 20px 0;">
         <img src="suspect.png" alt="Спрайт Санька" style="max-width: 100%; border: 1px solid #ff4a5a; border-radius: 4px;">
       </div>
@@ -404,25 +188,18 @@
       
       <p style="margin-top: 30px;"><span class="label">ФАЙЛ 03: КООРДИНАТЫ_БУНКЕРА</span></p>
       <p style="font-size: 14px; color: #8a6aa0; line-height: 1.6;">
-        Широта: 50.0000<br>
-        Долгота: 19.0000<br>
-        Глубина: ERROR<br>
+        Широта: 50.0000<br>Долгота: 19.0000<br>Глубина: ERROR<br>
         <span style="color: #ff4a5a;">Субъект не найден.</span>
       </p>
     </div>
   </section>
 
   <footer>
-    <div class="footer-logo">DS</div>
+    <!-- ТЕПЕРЬ ЛОГОТИП DS В ФУТЕРЕ ЯВЛЯЕТСЯ КНОПКОЙ ДЛЯ ВВОДА КОДА -->
+    <div class="footer-logo" id="secret-trigger" title="Нажми для ввода кода">DS</div>
     DeltashotDev © 2026
-    <!-- Скрытая подсказка для АРГ -->
     <div style="color: #08080d; font-size: 12px; margin-top: 10px; cursor: default; user-select: text;">
       [ERR: 5389GH - ACCESS]
-    </div>
-
-    <!-- НЕВИДИМОЕ ПОЛЕ ДЛЯ ВВОДА КОДА С ТЕЛЕФОНА -->
-    <div style="margin-top: 20px; opacity: 0.01; height: 1px; overflow: hidden;">
-      <input type="text" id="mobile-secret-input" placeholder="Введите код..." autocomplete="off">
     </div>
   </footer>
 
@@ -461,30 +238,33 @@ function checkSecretCode(inputStr) {
     }, 150);
 
     secretCode = ''; 
-    document.getElementById('mobile-secret-input').value = ''; 
+  } else {
+    alert("ДОСТУП ЗАПРЕЩЕН. Неверный код.");
   }
 }
 
-// 1. Слушаем ПК
+// 1. Слушаем ПК (ввод с клавиатуры)
 document.addEventListener('keydown', function(event) {
   if (event.key.length > 1) return; 
 
   secretCode += event.key.toUpperCase();
-  
   if (secretCode.length > TARGET_CODE.length) {
     secretCode = secretCode.slice(-TARGET_CODE.length);
   }
-
   if (secretCode === TARGET_CODE) {
     checkSecretCode(secretCode);
   }
 });
 
-// 2. Слушаем ТЕЛЕФОН
-document.getElementById('mobile-secret-input').addEventListener('input', function(e) {
-  const val = e.target.value;
-  if (val.length >= TARGET_CODE.length) {
-    checkSecretCode(val);
+// 2. Слушаем ТЕЛЕФОН (клик по логотипу DS в футере)
+document.getElementById('secret-trigger').addEventListener('click', function(e) {
+  e.preventDefault();
+  
+  // Вызываем системное окно ввода
+  const userCode = prompt("СИСТЕМА: Введите код доступа для расшифровки архива.");
+  
+  if (userCode !== null && userCode.trim() !== '') {
+    checkSecretCode(userCode.trim());
   }
 });
 </script>
