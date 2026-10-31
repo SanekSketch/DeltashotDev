@@ -376,19 +376,51 @@
         </div>
         <div class="copy-hint">нажми, чтобы скопировать</div>
       </div>
-
-
     </div>
   </section>
 
-<footer>
+  <!-- СЕКРЕТНЫЙ ОТДЕЛ АРГ (Изначально скрыт) -->
+  <section id="secret-section" style="display: none;">
+    <div class="section-title blood" style="letter-spacing: 2px;">АРХИВ ЗАСЕКРЕЧЕН</div>
+    
+    <div class="blood-block" style="font-family: monospace; border-left: 2px solid #ff4a5a;">
+      <p style="color: #ff4a5a; font-weight: bold; margin-bottom: 20px;">> ДОСТУП К ДЕЛУ №5389GH РАЗРЕШЕН</p>
+      
+      <p><span class="label">ФАЙЛ 01: ИЗОБРАЖЕНИЕ_ПОДОЗРЕВАЕМОГО.PNG</span></p>
+      <p style="font-size: 14px; color: #8a6aa0; margin-bottom: 10px;">Изъято из личного архива разработчика. Не подлежит распространению.</p>
+      
+      <!-- ВАЖНО: Картинка Санька. Замени 'suspect.png' на имя твоего файла -->
+      <div style="text-align: center; margin: 20px 0;">
+        <img src="suspect.png" alt="Спрайт Санька" style="max-width: 100%; border: 1px solid #ff4a5a; border-radius: 4px;">
+      </div>
+
+      <p style="margin-top: 30px;"><span class="label">ФАЙЛ 02: АУДИОЗАПИСЬ_СЕАНСА.TXT</span></p>
+      <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 8px; font-size: 14px; color: #c8a0a0; line-height: 1.5; margin-top: 10px;">
+        <p>[ЗАПИСЬ НАЧАТА]</p>
+        <p>Пациент отказывается признавать факт смерти. Утверждает, что объект был "монстром".</p>
+        <p>Продолжает утверждать, что фантазия — единственное безопасное место.</p>
+        <p>Рекомендовано: продлить изоляцию. <span style="color: #ff4a5a;">Код доступа 5389GH подтвержден.</span></p>
+        <p>[ЗАПИСЬ ОБОРВАНА]</p>
+      </div>
+      
+      <p style="margin-top: 30px;"><span class="label">ФАЙЛ 03: КООРДИНАТЫ_БУНКЕРА</span></p>
+      <p style="font-size: 14px; color: #8a6aa0;">Широта: 50.0000<br>Долгота: 19.0000<br>Глубина: ERROR</p>
+    </div>
+  </section>
+
+  <footer>
     <div class="footer-logo">DS</div>
     DeltashotDev © 2026
-</footer>
+    <!-- Скрытая подсказка для АРГ -->
+    <div style="color: #08080d; font-size: 12px; margin-top: 10px; cursor: default; user-select: text;">
+      [ERR: 5389GH - ACCESS]
+    </div>
+  </footer>
 
 </div>
 
 <script>
+// Функция копирования (твоя старая)
 function copyText(text, element) {
   navigator.clipboard.writeText(text).then(function() {
     element.classList.add('copied');
@@ -403,6 +435,34 @@ function copyText(text, element) {
     alert('Не удалось скопировать. Скопируй вручную: ' + text);
   });
 }
+
+// --- СЕКРЕТНЫЙ КОД АРГ ---
+let secretCode = '';
+const TARGET_CODE = '5389GH';
+
+document.addEventListener('keydown', function(event) {
+  if (event.key.length > 1) return; // Игнорируем Shift, Ctrl и т.д.
+
+  secretCode += event.key.toUpperCase();
+  
+  if (secretCode.length > TARGET_CODE.length) {
+    secretCode = secretCode.slice(-TARGET_CODE.length);
+  }
+
+  if (secretCode === TARGET_CODE) {
+    const secretSection = document.getElementById('secret-section');
+    secretSection.style.display = 'block';
+    
+    // Эффект "глитча" при появлении
+    document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+    setTimeout(() => {
+      document.body.style.filter = 'none';
+      secretSection.scrollIntoView({ behavior: 'smooth' });
+    }, 150);
+
+    secretCode = '';
+  }
+});
 </script>
 
 </body>
